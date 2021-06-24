@@ -9,11 +9,9 @@ const StyledHeader = styled.header`
     border-bottom: 1px solid #e0e0e0;
 
     @media (max-width: 1200px) {
-        .header--floating {
-            position: fixed;
-            top: 0;
-            background-color: #fff;
-        }
+        position: fixed;
+        top: 0;
+        background-color: #fff;
     }
 `;
 
@@ -21,8 +19,6 @@ const HeaderContainer = styled.div`
     margin: auto;
     width: 95%;
     max-width: 1200px;
-
-    
 `;
 
 const HeaderMobile = styled.div`
@@ -72,12 +68,11 @@ const HeaderImg = styled.img`
     transform: translateY(10px);
 `;
 
-/*
-.header__search {
-  position: relative;
-}
+const HeaderSearch = styled.div`
+    position: relative;
+`;
 
-.header__icon {
+const HeaderIcon = styled.img`
   width: 24px;
   opacity: 26%;
   top: 8px;
@@ -85,53 +80,26 @@ const HeaderImg = styled.img`
   padding-left: 10px;
   color: rgba(0, 0, 0, 0.26);
   line-height: 40px;
-}
+`;
 
-.header__input {
-  height: 40px;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.23);
-  padding-left: 40px;
-}
+const HeaderInput = styled.input`
+    height: 40px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    padding-left: 40px;
 
-.header__input:hover {
-  border-color: #000;
-}
+    &:hover {
+    border-color: #000;
+    }
 
-.header__input::placeholder {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  font-family: "Open Sans";
-  color: #9b9b9b;
-}
-
-@media (max-width: 1200px) {
-  .header__menu {
-    display: none;
-  }
-}
-
-.header__menu .menu__list {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.header__menu .menu__link {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #000;
-  text-transform: uppercase;
-  padding-bottom: 5px;
-  vertical-align: baseline;
-}
-
-.header__menu .menu__link:hover {
-  border-bottom: 2px solid #000;
-}
-*/
+    &::placeholder {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: "Open Sans";
+    color: #9b9b9b;
+    }
+`;
 
 function Header() {
 
@@ -158,12 +126,12 @@ function Header() {
                         <HeaderImg src="assets/riachuelo.svg" alt="Logo" />
                     </HeaderLogo>
                 </HeaderDesktop>
-                <div className="header__search">
-                    <img className="header__icon" src="assets/search.svg" alt="lupa" />
-                    <input className="header__input" type="search" placeholder="O que você está procurando?"
+                <HeaderSearch>
+                    <HeaderIcon src="assets/search.svg" alt="lupa" />
+                    <HeaderInput type="search" placeholder="O que você está procurando?"
                         onChange={(event) => setFilter(event.target.value)}
                     />
-                </div>
+                </HeaderSearch>
 
                 <Menu />
             </HeaderContainer>
