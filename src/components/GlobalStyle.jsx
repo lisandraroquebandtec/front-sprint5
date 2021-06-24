@@ -1,8 +1,6 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+import { createGlobalStyle } from "styled-components";
 
+export const GlobalStyle = createGlobalStyle`
 html,
 body,
 div,
@@ -127,3 +125,20 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+html {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+html a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html input {
+  outline: none;
+}
+
+/* body { background-color: red; } */
+`;

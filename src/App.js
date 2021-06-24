@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Message from './components/Message';
@@ -11,6 +10,7 @@ import MessageContext from './contexts/MessageContext';
 import useLoading from './hooks/useLoading';
 import ProductsPage from './pages/products/ProductsPage';
 import CategoriesService from './services/CategoriesService';
+import { GlobalStyle } from "./components/GlobalStyle";
 
 function App() {
   const [filter, setFilter] = useState('');
@@ -30,21 +30,22 @@ function App() {
   }
 
   return (
-    <FilterContext.Provider value={{ filter, setFilter }}>
-      <LoadingContext.Provider value={{ addRequest, removeRequest, isLoading }}>
-        <MessageContext.Provider value={{ message, setMessage }}>
-          <CategoriesContext.Provider value={{ categories }}>
-            <Spinner></Spinner>
-            <div className="page-container">
+    <>
+      <GlobalStyle />
+      <FilterContext.Provider value={{ filter, setFilter }}>
+        <LoadingContext.Provider value={{ addRequest, removeRequest, isLoading }}>
+          <MessageContext.Provider value={{ message, setMessage }}>
+            <CategoriesContext.Provider value={{ categories }}>
+              <Spinner></Spinner>
               <Message></Message>
               <Header></Header>
               <ProductsPage></ProductsPage>
-            </div>
-            <Footer></Footer>
-          </CategoriesContext.Provider>
-        </MessageContext.Provider>
-      </LoadingContext.Provider>
-    </FilterContext.Provider>
+              <Footer></Footer>
+            </CategoriesContext.Provider>
+          </MessageContext.Provider>
+        </LoadingContext.Provider>
+      </FilterContext.Provider>
+    </>
   );
 }
 
