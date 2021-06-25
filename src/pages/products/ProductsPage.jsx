@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import FilterContext from "../../contexts/FilterContext";
 import LoadingContext from "../../contexts/LoadingContext";
 import MessageContext from "../../contexts/MessageContext";
@@ -6,9 +7,15 @@ import ProductsService from "../../services/ProductsService";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Filters from "./components/Filters";
 
-function Product({ image, name, price }) {
+function Product({ sku, image, name, price }) {
+    const history = useHistory();
+
+    function detail() {
+        history.push('/product/' + sku);
+    }
+
     return (
-        <li className="products__card card">
+        <li className="products__card card" onClick={() => detail()}>
             <div className="card">
                 <img className="card__img" src={image} alt="" />
                 <p className="card__description">
@@ -45,7 +52,7 @@ function ProductsPage() {
     }
 
     return (
-        <main className="main">
+        <>
             <Breadcrumbs></Breadcrumbs>
             <Filters filters={filters}></Filters>
             <section className="main__products products">
@@ -56,7 +63,7 @@ function ProductsPage() {
                                 filter ? p.name.toUpperCase().indexOf(filter.toUpperCase()) !== -1 : true)
                             .map(
                                 p =>
-                                    <Product key={p.sku} image={p.image} name={p.name} price={p.price} />
+                                    <Product key={p.sku} sku={p.sku} image={p.image} name={p.name} price={p.price} />
                             )
                         }
                     </ol>
@@ -66,7 +73,8 @@ function ProductsPage() {
                     </ol>
                 </div>
             </section>
-        </main>
+        </>
+
     );
 }
 

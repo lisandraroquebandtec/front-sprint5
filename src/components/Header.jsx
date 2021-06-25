@@ -110,24 +110,24 @@ function Header() {
             <HeaderContainer>
                 <HeaderMobile>
                     <HeaderDrawer>
-                        <img src="assets/menu.svg" alt="menu" />
+                        <img src="/assets/menu.svg" alt="menu" />
                         <MenuTitle>menu</MenuTitle>
                     </HeaderDrawer>
                     {/* <HeaderDrawer>
-                        <img src="assets/close.svg" alt="fechar menu" />
+                        <img src="/assets/close.svg" alt="fechar menu" />
                         <MenuTitle>fechar</MenuTitle>
                     </HeaderDrawer> */}
                     <HeaderLogo>
-                        <HeaderImg src="assets/rchlo.svg" alt="Logo" />
+                        <HeaderImg src="/assets/rchlo.svg" alt="Logo" />
                     </HeaderLogo>
                 </HeaderMobile>
                 <HeaderDesktop>
                     <HeaderLogo>
-                        <HeaderImg src="assets/riachuelo.svg" alt="Logo" />
+                        <HeaderImg src="/assets/riachuelo.svg" alt="Logo" />
                     </HeaderLogo>
                 </HeaderDesktop>
                 <HeaderSearch>
-                    <HeaderIcon src="assets/search.svg" alt="lupa" />
+                    <HeaderIcon src="/assets/search.svg" alt="lupa" />
                     <HeaderInput type="search" placeholder="O que você está procurando?"
                         onChange={(event) => setFilter(event.target.value)}
                     />
