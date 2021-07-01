@@ -30,8 +30,6 @@ const ButtonGroup = styled.div`
   flex-direction: column;
 `;
 
-
-
 function ProductsDetail() {
     const tamanhos = [4, 6, 8, 10];
     const [product, setProduct] = useState([]);
@@ -88,9 +86,8 @@ function ProductsDetail() {
                     <p>Selecionar Tamanho: {tamanho}</p>
                     <div>
                         {tamanhos.map(t =>
-                            <button onClick={() => setTamanho(t)}>{t}</button>
+                            <button key={t} onClick={() => setTamanho(t)}>{t}</button>
                         )}
-
                     </div>
                     <ButtonGroup>
                         <Price>R$ {product.price}</Price>
