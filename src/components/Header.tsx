@@ -101,7 +101,7 @@ const HeaderInput = styled.input`
     }
 `;
 
-function Header() {
+const Header: React.FC = () => {
 
     const { setFilter } = useContext(FilterContext);
 

@@ -7,7 +7,14 @@ import ProductsService from "../../services/ProductsService";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Filters from "./components/Filters";
 
-function Product({ sku, image, name, price }) {
+interface PropsProduct{
+    sku:string;
+    image:string;
+    name:string;
+    price:string;
+}
+
+const Product: React.FC <PropsProduct> = ({ sku, image, name, price }) =>{
     const history = useHistory();
 
     function detail() {
@@ -29,7 +36,7 @@ function Product({ sku, image, name, price }) {
     );
 }
 
-function ProductsPage() {
+const ProductsPage: React.FC = () => {
     const [products, setProducts] = useState([]);
     const [filters, setFilters] = useState([]);
 
@@ -43,7 +50,7 @@ function ProductsPage() {
     function loadProducts() {
         addRequest();
         ProductsService.get()
-            .then(r => {
+            .then((r: any)  => {
                 setProducts(r.products);
                 setFilters(r.filters);
             })
@@ -59,10 +66,10 @@ function ProductsPage() {
                 <div className="products__row">
                     <ol className="products__list">
                         {products
-                            .filter(p =>
+                            .filter((p: any)  =>
                                 filter ? p.name.toUpperCase().indexOf(filter.toUpperCase()) !== -1 : true)
                             .map(
-                                p =>
+                                (p: any)  =>
                                     <Product key={p.sku} sku={p.sku} image={p.image} name={p.name} price={p.price} />
                             )
                         }

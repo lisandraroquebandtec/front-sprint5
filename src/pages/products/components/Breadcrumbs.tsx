@@ -1,7 +1,12 @@
 import { useContext } from "react";
 import CategoriesContext from "../../../contexts/CategoriesContext";
 
-function BreadcrumbItem({ link, label }) {
+interface PropsBreadcrumb {
+    link: string;
+    label: string;
+}
+
+const BreadcrumbItem: React.FC <PropsBreadcrumb> = ({ link, label }) =>{
     return (
         <li className="breadcrumbs__item">
             { link ?
@@ -16,13 +21,13 @@ function BreadcrumbItem({ link, label }) {
     );
 }
 
-function Breadcrumbs() {
+const Breadcrumbs: React.FC = () => {
     const { categories } = useContext(CategoriesContext);
     return (
         <section className="main__breadcrumbs breadcrumbs">
             <nav>
                 <ol className="breadcrumbs__list">
-                    {categories.current && categories.current.map(c => <BreadcrumbItem key={c.id} link={c.link} label={c.name} />)}
+                    {categories.current && categories.current.map((c:any) => <BreadcrumbItem key={c.id} link={c.link} label={c.name} />)}
                 </ol>
             </nav>
         </section>

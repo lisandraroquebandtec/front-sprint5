@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
@@ -17,6 +17,7 @@ import ProductsPage from './pages/products/ProductsPage';
 import ProductDetail from './pages/products/ProductDetail';
 import CategoriesService from './services/CategoriesService';
 
+
 const Main = styled.main`
   margin: 0 auto;
   width: 80%;
@@ -24,11 +25,12 @@ const Main = styled.main`
   padding: 16px;
 
   @media (max-width: 1200px) {
-    margin-top: 150px;
-  }
-`;
+    margin-top: 150px;}
 
-function App() {
+  `;
+  
+  const App: React.FC = () => {
+    
   const [filter, setFilter] = useState('');
   const [message, setMessage] = useState('');
   const [categories, setCategories] = useState({});
@@ -37,17 +39,19 @@ function App() {
   // eslint-disable-next-line
   useEffect(() => loadCategories(), []);
 
-  function loadCategories() {
+  function loadCategories(){
     addRequest();
+    
     CategoriesService.get()
-      .then(c => setCategories(c))
+      .then((c: any) => setCategories(c))
       .catch(() => setMessage("Ocorreu um erro ao carregar as categorias..."))
       .finally(() => removeRequest());
   }
 
   return (
+    <>
+    <GlobalStyle/>
     <Router>
-      <GlobalStyle />
       <FilterContext.Provider value={{ filter, setFilter }}>
         <LoadingContext.Provider value={{ addRequest, removeRequest, isLoading }}>
           <MessageContext.Provider value={{ message, setMessage }}>
@@ -74,7 +78,8 @@ function App() {
         </LoadingContext.Provider>
       </FilterContext.Provider>
     </Router>
+  </>
   );
-}
+};
 
 export default App;

@@ -24,7 +24,7 @@ const CloseBtn = styled.span`
     }
 `;
 
-function Message() {
+const Message: React.FC = () => {
     const { message, setMessage } = useContext(MessageContext);
 
     return (

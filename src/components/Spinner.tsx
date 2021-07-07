@@ -59,9 +59,8 @@ const StyledSpinner = styled.div`
 `;
 
 
-function Spinner() {
+const Spinner: React.FC = ()=> {
     const { isLoading } = useContext(LoadingContext);
-
     return (
         isLoading() && <StyledSpinner></StyledSpinner>
     );

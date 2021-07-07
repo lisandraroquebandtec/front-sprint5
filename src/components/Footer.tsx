@@ -1,4 +1,4 @@
-function Footer() {
+const Footer: React.FC = () => {
     return (
         <footer className="footer">
             <section className="footer__contact">

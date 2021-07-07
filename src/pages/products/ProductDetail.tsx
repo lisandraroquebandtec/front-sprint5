@@ -5,6 +5,13 @@ import LoadingContext from "../../contexts/LoadingContext";
 import MessageContext from "../../contexts/MessageContext";
 import ProductsService from "../../services/ProductsService";
 
+interface PropsProduct{
+    sku:string;
+    image:string;
+    name:string;
+    price:string;
+}
+
 const Detail = styled.section`
   display: flex;
   width: 100%;
@@ -30,20 +37,17 @@ const ButtonGroup = styled.div`
   flex-direction: column;
 `;
 
-function ProductsDetail() {
+const ProductsDetail: React.FC = () => {
     const tamanhos = [4, 6, 8, 10];
-    const [product, setProduct] = useState([]);
+    const [product, setProduct] = useState<PropsProduct | any>([]);
     const [tamanho, setTamanho] = useState(tamanhos[0]);
-    // const [filters, setFilters] = useState([]);
 
-    // const { filter } = useContext(FilterContext);
     const { addRequest, removeRequest } = useContext(LoadingContext);
     const { setMessage } = useContext(MessageContext);
 
-
     const history = useHistory();
 
-    const { sku } = useParams();
+    const  {sku}:PropsProduct = useParams();
 
     // eslint-disable-next-line
     useEffect(() => loadProduct(), []);
@@ -60,8 +64,8 @@ function ProductsDetail() {
     function loadProduct() {
         addRequest();
         ProductsService.get()
-            .then(r => {
-                const p = r.products.find(p => p.sku + '' === sku);
+            .then((r:any) => {
+                const p: any = r.products.find((p:any) => p.sku + '' === sku);
                 if (!p) {
                     throw new Error('Produto não encontrado!');
                 }
@@ -69,7 +73,7 @@ function ProductsDetail() {
                 setProduct(p);
                 // setFilters(r.filters);
             })
-            .catch((e) => setMessage(e.message))
+            .catch((e:any) => setMessage(e.message))
             .finally(() => removeRequest());
     }
 
