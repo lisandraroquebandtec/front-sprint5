@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function useLoading() {
+const useLoading = () =>{
 
     const [liveRequests, setLiveRequests] = useState(0);
 

@@ -26,7 +26,7 @@ const CloseBtn = styled.span`
 
 const Message: React.FC = () => {
     const { message, setMessage } = useContext(MessageContext);
-
+    
     return (
         message &&
         <Alert>

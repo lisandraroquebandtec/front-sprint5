@@ -65,7 +65,7 @@ const ProductsDetail: React.FC = () => {
         addRequest();
         ProductsService.get()
             .then((r:any) => {
-                const p: any = r.products.find((p:any) => p.sku + '' === sku);
+                const p: any = r.products.find((p:PropsProduct) => p.sku + '' === sku);
                 if (!p) {
                     throw new Error('Produto não encontrado!');
                 }

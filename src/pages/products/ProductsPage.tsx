@@ -50,26 +50,26 @@ const ProductsPage: React.FC = () => {
     function loadProducts() {
         addRequest();
         ProductsService.get()
-            .then((r: any)  => {
+            .then((r:any)  => {
                 setProducts(r.products);
                 setFilters(r.filters);
             })
             .catch(() => setMessage("Ocorreu um erro ao carregar os produtos..."))
             .finally(() => removeRequest());
     }
-
+    
     return (
         <>
             <Breadcrumbs></Breadcrumbs>
-            <Filters filters={filters}></Filters>
+            <Filters filters={filters} products={products} setProducts={setProducts}></Filters>
             <section className="main__products products">
                 <div className="products__row">
                     <ol className="products__list">
                         {products
-                            .filter((p: any)  =>
+                            .filter((p: PropsProduct)  =>
                                 filter ? p.name.toUpperCase().indexOf(filter.toUpperCase()) !== -1 : true)
                             .map(
-                                (p: any)  =>
+                                (p: PropsProduct)  =>
                                     <Product key={p.sku} sku={p.sku} image={p.image} name={p.name} price={p.price} />
                             )
                         }

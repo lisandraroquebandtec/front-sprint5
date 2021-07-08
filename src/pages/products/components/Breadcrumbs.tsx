@@ -6,6 +6,12 @@ interface PropsBreadcrumb {
     label: string;
 }
 
+interface PropsBreadcrumbItem {
+    id: string;
+    link: string;
+    name: string;
+}
+
 const BreadcrumbItem: React.FC <PropsBreadcrumb> = ({ link, label }) =>{
     return (
         <li className="breadcrumbs__item">
@@ -21,13 +27,13 @@ const BreadcrumbItem: React.FC <PropsBreadcrumb> = ({ link, label }) =>{
     );
 }
 
-const Breadcrumbs: React.FC = () => {
+const Breadcrumbs: React.FC  = () => {
     const { categories } = useContext(CategoriesContext);
     return (
         <section className="main__breadcrumbs breadcrumbs">
             <nav>
                 <ol className="breadcrumbs__list">
-                    {categories.current && categories.current.map((c:any) => <BreadcrumbItem key={c.id} link={c.link} label={c.name} />)}
+                    {categories.current && categories.current.map((c:PropsBreadcrumbItem) => <BreadcrumbItem key={c.id} link={c.link} label={c.name} />)}
                 </ol>
             </nav>
         </section>

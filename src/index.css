@@ -228,6 +228,12 @@
   margin-left: 8px;
 }
 
+.main__filters .filters__img__selected {
+  height: 20px;
+  margin-left: 8px;
+  transform: rotate(180deg);
+}
+
 .main__products {
   margin-top: 20px;
   margin-bottom: 20px;

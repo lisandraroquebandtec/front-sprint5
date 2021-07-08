@@ -30,7 +30,8 @@ const Main = styled.main`
   `;
   
   const App: React.FC = () => {
-    
+  
+  const [typeSelected, setTypeSelected] = useState<string>('');
   const [filter, setFilter] = useState('');
   const [message, setMessage] = useState('');
   const [categories, setCategories] = useState({});
@@ -52,7 +53,7 @@ const Main = styled.main`
     <>
     <GlobalStyle/>
     <Router>
-      <FilterContext.Provider value={{ filter, setFilter }}>
+      <FilterContext.Provider value={{ filter, setFilter, typeSelected, setTypeSelected }}>
         <LoadingContext.Provider value={{ addRequest, removeRequest, isLoading }}>
           <MessageContext.Provider value={{ message, setMessage }}>
             <CategoriesContext.Provider value={{ categories }}>
